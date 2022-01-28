@@ -1,5 +1,14 @@
 // Create variables targetting the relevant DOM elements here 👇
+var coverImage = document.querySelector('.cover-image');
+var coverTitle = document.querySelector('.cover-title');
+var taglineOne = document.querySelector('.tagline-1');
+var taglineTwo = document.querySelector('.tagline-2');
 
+var randomCoverBtn = document.querySelector('.random-cover-button');
+var saveCoverBtn = document.querySelector('.save-cover-button');
+var viewSavedCoversBtn = document.querySelector('.view-saved-button');
+var makeNewCoverBtn = document.querySelector('.make-new-button');
+var homeBtn = document.querySelector('.home-button');
 
 // We've provided a few variables below
 var savedCovers = [
