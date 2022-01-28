@@ -14,7 +14,11 @@ var homePage = document.querySelector('.home-view');
 var makeYourOwnPage = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
 
-
+var createCoverInput = document.querySelector('#cover');
+var createTitleInput = document.querySelector('#title');
+var createDescriptor1Input = document.querySelector('#descriptor1');
+var createDescriptor2Input = document.querySelector('#descriptor2');
+var makeMyBookBtn = document.querySelector('.create-new-book-button');
 
 
 // We've provided a few variables below
@@ -50,6 +54,7 @@ function makeNewCoverPage() {
   showElement(makeYourOwnPage);
   hideElement(homePage);
 }
+
 
 
 // We've provided one function to get you started
