@@ -34,7 +34,9 @@ function showElement(element) {
   element.classList.remove('hidden');
 }
 
-
+function hideElement(element) {
+  element.classList.add('hidden');
+}
 
 function changeCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
