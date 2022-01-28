@@ -30,8 +30,9 @@ var currentCover;
 // Add your event listeners here 👇
 window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
-makeNewCoverBtn.addEventListener('click', makeNewCoverPage);
+makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
 viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
+makeMyBookBtn.addEventListener('click', makeNewCover);
 
 // Create your event handlers and other functions here 👇
 function showElement(element) {
@@ -50,11 +51,25 @@ function changeCover() {
   taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
-function makeNewCoverPage() {
+function displayNewCoverPage() {
   showElement(makeYourOwnPage);
   hideElement(homePage);
 }
 
+function displayHomePage() {
+  showElement(homePage);
+  hideElement(makeYourOwnPage);
+}
+
+function makeNewCover() {
+  // event.preventDefault();
+  currentCover = new Cover(createCoverInput.value, createTitleInput.value, createDescriptor1Input.value, createDescriptor2Input.value);
+  coverImage.src = currentCover.coverImgSrc;
+  coverTitle.innerText = currentCover.title;
+  taglineOne.innerText = currentCover.descriptor1;
+  taglineTwo.innerText = currentCover.descriptor2;
+
+}
 
 
 // We've provided one function to get you started
