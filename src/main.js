@@ -27,8 +27,12 @@ var currentCover;
 window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', makeNewCoverPage);
+viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 
 // Create your event handlers and other functions here 👇
+function showElement(element) {
+  element.classList.remove('hidden');
+}
 
 
 
