@@ -17,10 +17,17 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-
+window.onload = changeCover();
+randomCoverBtn.addEventListener('click', changeCover);
 
 // Create your event handlers and other functions here 👇
-
+function changeCover() {
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
+  coverImage.src = covers[getRandomIndex(covers)];
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+  taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
+  taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
