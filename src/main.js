@@ -19,6 +19,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
+makeNewCoverBtn.addEventListener('click', makeNewCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
