@@ -46,6 +46,10 @@ function changeCover() {
   taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
+function makeNewCoverPage() {
+  showElement(makeYourOwnPage);
+  hideElement(homePage);
+}
 
 
 // We've provided one function to get you started
