@@ -32,6 +32,8 @@ window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
 makeMyBookBtn.addEventListener('click', makeNewCover);
+saveCoverBtn.addEventListener('click', saveCover);
+
 // viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 
 // Create your event handlers and other functions here 👇
@@ -73,6 +75,8 @@ function makeNewCover() {
   taglineTwo.innerText = currentCover.tagline2;
   displayHomePage();
 }
+
+
 
 
 // We've provided one function to get you started
