@@ -103,8 +103,15 @@ function showCovers(savedCovers) {
   }
 }
 
-
-
+function deleteCover() {
+  var remove = event.target.id;
+    for (var i = 0; i < savedCovers.length; i++) {
+      if (savedCovers[i].id.toString() == remove) {
+        savedCovers.splice([i], 1);
+      }
+    }
+    showCovers();
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
