@@ -76,9 +76,6 @@ function displaySavedPostersPage() {
 function makeNewCover() {
   event.preventDefault();
   currentCover = new Cover(createCoverInput.value, createTitleInput.value, createDescriptor1Input.value, createDescriptor2Input.value);
-  // covers.push(createCoverInput.value);
-  // titles.push(createTitleInput.value);
-  // descriptors.push(createDescriptor1Input.value, createDescriptor2Input.value);
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
@@ -94,18 +91,18 @@ function saveCover() {
 }
 
 function showCovers(savedCovers) {
-  saveCoverView.innerHTML = '';
+  savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
-  saveCoverView.innerHTML +=
-  `<section class="mini-cover" id = ${savedCovers[i].id}>
-    <img class="cover-image" src=${savedCovers[i].cover}>
+  savedCoversSection.innerHTML +=
+  `<section class="mini-cover" id='${savedCovers[i].id}'>
+    <img class="cover-image" src='${savedCovers[i].cover}' id='${savedCovers[i].id}'>
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
-  </section>`;
+  </section>`
   }
-};
+}
 
 
 
