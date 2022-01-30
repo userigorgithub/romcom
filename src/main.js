@@ -38,8 +38,7 @@ viewSavedCoversBtn.addEventListener('click', function() {
   displaySavedPostersPage(savedCoversPage);
   showCovers(savedCovers);
 });
-
-// viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
+savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
