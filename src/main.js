@@ -76,6 +76,12 @@ function makeNewCover() {
   displayHomePage();
 }
 
+function saveCover() {
+  if (savedCovers.includes(currentCover)) {
+    return savedCovers;
+  }
+  savedCovers.push(currentCover);
+}
 
 
 
