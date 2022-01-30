@@ -13,6 +13,7 @@ var homeBtn = document.querySelector('.home-button');
 var homePage = document.querySelector('.home-view');
 var makeYourOwnPage = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var createCoverInput = document.querySelector('#cover');
 var createTitleInput = document.querySelector('#title');
@@ -32,6 +33,12 @@ window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
 makeMyBookBtn.addEventListener('click', makeNewCover);
+saveCoverBtn.addEventListener('click', saveCover);
+viewSavedCoversBtn.addEventListener('click', function() {
+  displaySavedPostersPage(savedCoversPage);
+  showCovers(savedCovers);
+});
+
 // viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 
 // Create your event handlers and other functions here 👇
@@ -61,18 +68,43 @@ function displayHomePage() {
   hideElement(makeYourOwnPage);
 }
 
+function displaySavedPostersPage() {
+  showElement(savedCoversPage);
+  hideElement(homePage);
+}
+
 function makeNewCover() {
   event.preventDefault();
   currentCover = new Cover(createCoverInput.value, createTitleInput.value, createDescriptor1Input.value, createDescriptor2Input.value);
-  // covers.push(createCoverInput.value);
-  // titles.push(createTitleInput.value);
-  // descriptors.push(createDescriptor1Input.value, createDescriptor2Input.value);
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
   displayHomePage();
 }
+
+function saveCover() {
+  if (savedCovers.includes(currentCover)) {
+    return savedCovers;
+  }
+  savedCovers.push(currentCover);
+}
+
+function showCovers(savedCovers) {
+  savedCoversSection.innerHTML = '';
+  for (var i = 0; i < savedCovers.length; i++) {
+  savedCoversSection.innerHTML +=
+  `<section class="mini-cover" id='${savedCovers[i].id}'>
+    <img class="cover-image" src='${savedCovers[i].cover}' id='${savedCovers[i].id}'>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+  }
+}
+
+
 
 
 // We've provided one function to get you started
