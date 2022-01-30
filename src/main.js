@@ -31,24 +31,24 @@ var currentCover;
 window.onload = changeCover();
 randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
-viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 makeMyBookBtn.addEventListener('click', makeNewCover);
+// viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 
 // Create your event handlers and other functions here 👇
-function showElement(element) {
-  element.classList.remove('hidden');
-}
-
-function hideElement(element) {
-  element.classList.add('hidden');
-}
-
 function changeCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
   taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+}
+
+function hideElement(element) {
+  element.classList.add('hidden');
+}
+
+function showElement(element) {
+  element.classList.remove('hidden');
 }
 
 function displayNewCoverPage() {
@@ -62,13 +62,16 @@ function displayHomePage() {
 }
 
 function makeNewCover() {
-  // event.preventDefault();
+  event.preventDefault();
   currentCover = new Cover(createCoverInput.value, createTitleInput.value, createDescriptor1Input.value, createDescriptor2Input.value);
-  coverImage.src = currentCover.coverImgSrc;
+  // covers.push(createCoverInput.value);
+  // titles.push(createTitleInput.value);
+  // descriptors.push(createDescriptor1Input.value, createDescriptor2Input.value);
+  coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
-  taglineOne.innerText = currentCover.descriptor1;
-  taglineTwo.innerText = currentCover.descriptor2;
-
+  taglineOne.innerText = currentCover.tagline1;
+  taglineTwo.innerText = currentCover.tagline2;
+  displayHomePage();
 }
 
 
