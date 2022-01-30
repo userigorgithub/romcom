@@ -13,6 +13,7 @@ var homeBtn = document.querySelector('.home-button');
 var homePage = document.querySelector('.home-view');
 var makeYourOwnPage = document.querySelector('.form-view');
 var savedCoversPage = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 
 var createCoverInput = document.querySelector('#cover');
 var createTitleInput = document.querySelector('#title');
@@ -90,7 +91,6 @@ function saveCover() {
   }
   savedCovers.push(currentCover);
 }
-
 
 
 
