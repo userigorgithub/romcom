@@ -33,6 +33,9 @@ randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
 makeMyBookBtn.addEventListener('click', makeNewCover);
 saveCoverBtn.addEventListener('click', saveCover);
+viewSavedCoversBtn.addEventListener('click', function() {
+
+});
 
 // viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
 
@@ -63,6 +66,11 @@ function displayHomePage() {
   hideElement(makeYourOwnPage);
 }
 
+function displaySavedPostersPage() {
+  showElement(savedCoversPage);
+  hideElement(homePage);
+}
+
 function makeNewCover() {
   event.preventDefault();
   currentCover = new Cover(createCoverInput.value, createTitleInput.value, createDescriptor1Input.value, createDescriptor2Input.value);
@@ -82,6 +90,9 @@ function saveCover() {
   }
   savedCovers.push(currentCover);
 }
+
+
+
 
 
 
