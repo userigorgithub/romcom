@@ -38,8 +38,7 @@ viewSavedCoversBtn.addEventListener('click', function() {
   displaySavedPostersPage(savedCoversPage);
   showCovers(savedCovers);
 });
-
-// viewSavedCoversBtn.addEventListener('click', viewSavedCoversPage);
+savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
 function changeCover() {
@@ -94,8 +93,8 @@ function showCovers(savedCovers) {
   savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML +=
-  `<section class="mini-cover" id='${savedCovers[i].id}'>
-    <img class="cover-image" src='${savedCovers[i].cover}' id='${savedCovers[i].id}'>
+  `<section class="mini-cover" id="${savedCovers[i].id}">
+    <img class="cover-image" src='${savedCovers[i].cover}' id="${savedCovers[i].id}">
     <h2 class="cover-title">${savedCovers[i].title}</h2>
     <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
@@ -104,8 +103,15 @@ function showCovers(savedCovers) {
   }
 }
 
-
-
+function deleteCover(event) {
+  var removeCover = event.target.id;
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (`${savedCovers[i].id}` === removeCover) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  showCovers();
+}
 
 // We've provided one function to get you started
 function getRandomIndex(array) {
