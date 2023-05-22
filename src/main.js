@@ -21,17 +21,15 @@ var createDescriptor1Input = document.querySelector('#descriptor1');
 var createDescriptor2Input = document.querySelector('#descriptor2');
 var makeMyBookBtn = document.querySelector('.create-new-book-button');
 
-
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 
 // Add your event listeners here 👇
-window.onload = changeCover();
+window.onload = randomCover();
 randomCoverBtn.addEventListener('click', changeCover);
 makeNewCoverBtn.addEventListener('click', displayNewCoverPage);
+homeBtn.addEventListener('click', displayHomePage);
 makeMyBookBtn.addEventListener('click', makeNewCover);
 saveCoverBtn.addEventListener('click', saveCover);
 viewSavedCoversBtn.addEventListener('click', function() {
@@ -41,12 +39,16 @@ viewSavedCoversBtn.addEventListener('click', function() {
 savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
+function randomCover() {
+  currentCover = new Cover(coverImage.src = covers[getRandomIndex(covers)], coverTitle.innerText = titles[getRandomIndex(titles)], taglineOne.innerText = descriptors[getRandomIndex(descriptors)], taglineTwo.innerText = descriptors[getRandomIndex(descriptors)]);
+}
+
 function changeCover() {
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, taglineOne.innerText, taglineTwo.innerText);
-  coverImage.src = covers[getRandomIndex(covers)];
-  coverTitle.innerText = titles[getRandomIndex(titles)];
-  taglineOne.innerText = descriptors[getRandomIndex(descriptors)];
-  taglineTwo.innerText = descriptors[getRandomIndex(descriptors)];
+  randomCover();
+  coverImage.src = currentCover.cover;
+  coverTitle.innerText = currentCover.title;
+  taglineOne.innerText = currentCover.tagline1;
+  taglineTwo.innerText = currentCover.tagline2;
 }
 
 function hideElement(element) {
@@ -59,17 +61,28 @@ function showElement(element) {
 
 function displayNewCoverPage() {
   showElement(makeYourOwnPage);
+  showElement(homeBtn);
   hideElement(homePage);
+  hideElement(savedCoversPage);
+  hideElement(randomCoverBtn);
+  hideElement(saveCoverBtn);
 }
 
 function displayHomePage() {
   showElement(homePage);
+  showElement(randomCoverBtn);
+  showElement(saveCoverBtn);
   hideElement(makeYourOwnPage);
+  hideElement(homeBtn);
 }
 
 function displaySavedPostersPage() {
   showElement(savedCoversPage);
+  showElement(homeBtn);
   hideElement(homePage);
+  hideElement(makeYourOwnPage);
+  hideElement(randomCoverBtn);
+  hideElement(saveCoverBtn);
 }
 
 function makeNewCover() {
@@ -89,7 +102,7 @@ function saveCover() {
   savedCovers.push(currentCover);
 }
 
-function showCovers(savedCovers) {
+function showCovers() {
   savedCoversSection.innerHTML = '';
   for (var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML +=
@@ -103,11 +116,11 @@ function showCovers(savedCovers) {
   }
 }
 
-function deleteCover(event) {
+function deleteCover() {
   var removeCover = event.target.id;
   for (var i = 0; i < savedCovers.length; i++) {
     if (`${savedCovers[i].id}` === removeCover) {
-      savedCovers.splice(i, 1);
+      savedCovers.splice([i], 1);
     }
   }
   showCovers();
